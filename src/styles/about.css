@@ -1,0 +1,120 @@
+/* About page — prose layout within the specimen-gallery shell */
+
+.about {
+	width: min(100%, 40rem);
+	display: grid;
+	gap: var(--space-8);
+}
+
+.about__intro h1 {
+	font-size: clamp(2rem, 5vw, 2.75rem);
+	margin-bottom: var(--space-4);
+	letter-spacing: -0.04em;
+}
+
+.about__lede {
+	margin: 0;
+	font-size: var(--text-lg);
+	line-height: var(--leading-snug);
+	color: var(--color-text-muted);
+}
+
+.about__cta {
+	margin: var(--space-5) 0 0;
+	font-size: var(--text-base);
+}
+
+.about__cta a {
+	display: inline-flex;
+	align-items: center;
+	gap: var(--space-2);
+	padding: 0.55rem 1rem;
+	border-radius: 0.5rem;
+	background: var(--color-accent);
+	color: var(--color-on-accent);
+	font-weight: 600;
+	text-decoration: none;
+	transition: background var(--duration-fast) ease, filter var(--duration-fast) ease;
+}
+
+.about__cta a:hover {
+	background: var(--color-accent-soft);
+	color: var(--color-on-accent);
+	filter: brightness(1.05);
+}
+
+.about__section h2 {
+	font-size: var(--text-xl);
+	margin-bottom: var(--space-3);
+	color: var(--color-text);
+}
+
+.about__section p,
+.about__section li {
+	color: var(--color-text-muted);
+}
+
+.about__section p:last-child {
+	margin-bottom: 0;
+}
+
+.about__list {
+	margin: 0 0 var(--space-4);
+	padding-left: 1.25rem;
+	display: grid;
+	gap: var(--space-2);
+}
+
+.about__list li::marker {
+	color: var(--color-accent-dim);
+}
+
+.about__safety {
+	display: grid;
+	gap: var(--space-5);
+	padding: var(--space-5);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-lg);
+	background:
+		linear-gradient(165deg, color-mix(in srgb, var(--color-surface-hover) 45%, transparent), transparent 50%),
+		var(--color-surface);
+	box-shadow: var(--shadow-soft);
+}
+
+.about__refuse {
+	margin: 0;
+	padding: var(--space-4) var(--space-5);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius-md);
+	background: var(--color-bg-elevated);
+	list-style: none;
+	display: grid;
+	gap: var(--space-3);
+}
+
+.about__refuse li {
+	position: relative;
+	padding-left: 1.25rem;
+	color: var(--color-text-muted);
+	font-size: var(--text-sm);
+	line-height: var(--leading-snug);
+}
+
+.about__refuse li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.45em;
+	width: 0.45rem;
+	height: 0.45rem;
+	border-radius: 50%;
+	background: var(--color-danger);
+	opacity: 0.85;
+}
+
+.about__closing {
+	margin: 0;
+	font-size: var(--text-base);
+	color: var(--color-text);
+	line-height: var(--leading-snug);
+}

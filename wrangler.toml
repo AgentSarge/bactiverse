@@ -1,0 +1,5 @@
+# Cloudflare Pages — static assets only (Astro `output: 'static'` → dist).
+# Do not add @astrojs/cloudflare; Pages serves the built HTML/CSS/JS as-is.
+name = "bactiverse"
+compatibility_date = "2025-11-25"
+pages_build_output_dir = "dist"

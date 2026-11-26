@@ -1,0 +1,70 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PreviewStage from '../../components/PreviewStage.astro';
+import DetailTabs from '../../components/DetailTabs.astro';
+import CopyPromptButton from '../../components/CopyPromptButton';
+import SafetyBanner from '../../components/SafetyBanner.astro';
+import '../../styles/detail.css';
+
+export async function getStaticPaths() {
+	const bacteria = await getCollection('bacteria');
+	return bacteria.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry },
+	}));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+const pageTitle = data.commonName;
+const pageDescription = data.description;
+const previewAlt = `${data.commonName} (${data.scientificName}): ${data.caption}`;
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+	<article class="detail-page page-enter">
+		<header class="detail-page__top">
+			<a class="detail-page__back" href="/">← Go back</a>
+			<div class="detail-page__title-block">
+				<h1 class="detail-page__common">
+					{data.commonName}
+					<span class="detail-page__by"> · <em>{data.scientificName}</em></span>
+				</h1>
+			</div>
+		</header>
+
+		<div class="detail-page__layout">
+			<PreviewStage
+				image={data.image}
+				caption={data.caption}
+				alt={previewAlt}
+				mediaKind={data.mediaKind}
+			/>
+
+			<aside class="detail-page__panel" id="prompt">
+				<div class="detail-page__cta">
+					<CopyPromptButton
+						client:load
+						commonName={data.commonName}
+						scientificName={data.scientificName}
+						description={data.description}
+						traits={data.traits}
+						usefulFor={data.usefulFor}
+						disclaimer={data.disclaimer}
+					/>
+				</div>
+
+				<DetailTabs
+					description={data.description}
+					traits={data.traits}
+					usefulFor={data.usefulFor}
+					sources={data.sources}
+					tags={data.tags}
+				/>
+
+				<SafetyBanner message={data.disclaimer} compact />
+			</aside>
+		</div>
+	</article>
+</BaseLayout>

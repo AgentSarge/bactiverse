@@ -1,0 +1,140 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BacteriumCard from '../components/BacteriumCard.astro';
+import SearchFilter from '../components/SearchFilter.astro';
+import { matchesFilters, parseBrowseCategory, BROWSE_CATEGORIES } from '../lib/filters';
+import '../styles/browse.css';
+
+const bacteria = await getCollection('bacteria');
+const entries = [...bacteria].sort((a, b) =>
+	a.data.commonName.localeCompare(b.data.commonName, 'en', { sensitivity: 'base' }),
+);
+
+const initialCategory = parseBrowseCategory(Astro.url.searchParams.get('category'));
+const initialQuery = Astro.url.searchParams.get('q')?.trim() ?? '';
+const total = entries.length;
+const initiallyVisible = entries.filter((entry) =>
+	matchesFilters(entry.data, { category: initialCategory, query: initialQuery }),
+).length;
+
+const activeLabel =
+	BROWSE_CATEGORIES.find((c) => c.id === initialCategory)?.label ?? 'All';
+const heading = initialCategory === 'all' ? 'Browse all' : activeLabel;
+---
+
+<BaseLayout
+	title="Bactiverse"
+	description="Browse a curated gallery of bacteria specimens and copy grounded science prompts."
+>
+	<section
+		class="browse page-enter"
+		aria-labelledby="browse-heading"
+		data-browse-root
+		data-category={initialCategory}
+	>
+		<header class="browse__hero">
+			<h1 id="browse-heading" class="browse__title">{heading}</h1>
+			<p class="browse__lede">
+				Open specimen gallery — browse visuals, then copy a grounded science prompt for study and
+				writing.
+			</p>
+		</header>
+
+		<div class="browse__toolbar" role="region" aria-label="Filters">
+			<p class="browse__page">First page</p>
+			<div class="browse__filters">
+				<span class="browse__rule" aria-hidden="true"></span>
+				<a
+					class:list={['browse__chip', { 'is-active': initialCategory === 'all' }]}
+					href={initialQuery ? `/?q=${encodeURIComponent(initialQuery)}` : '/'}
+				>
+					All
+				</a>
+				<span class="browse__chip browse__chip--text">Stills</span>
+				<span class="browse__rule" aria-hidden="true"></span>
+				<details class="browse__menu">
+					<summary class="browse__menu-btn">
+						Sort: Name
+						<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 14.5 6.5 9l1.4-1.4L12 11.7l4.1-4.1L17.5 9z"/></svg>
+					</summary>
+					<ul class="browse__menu-list">
+						<li>
+							<span class="browse__menu-item is-active">Name</span>
+						</li>
+					</ul>
+				</details>
+				<details class="browse__menu">
+					<summary class="browse__menu-btn">
+						{initialCategory === 'all' ? 'Any shape' : activeLabel}
+						<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 14.5 6.5 9l1.4-1.4L12 11.7l4.1-4.1L17.5 9z"/></svg>
+					</summary>
+					<ul class="browse__menu-list">
+						{
+							BROWSE_CATEGORIES.map((category) => (
+								<li>
+									<a
+										class:list={[
+											'browse__menu-item',
+											{ 'is-active': category.id === initialCategory },
+										]}
+										href={
+											category.id === 'all'
+												? initialQuery
+													? `/?q=${encodeURIComponent(initialQuery)}`
+													: '/'
+												: `/?category=${category.id}${initialQuery ? `&q=${encodeURIComponent(initialQuery)}` : ''}`
+										}
+									>
+										{category.id === 'all' ? 'Any shape' : category.label}
+									</a>
+								</li>
+							))
+						}
+					</ul>
+				</details>
+				<SearchFilter value={initialQuery} placeholder="Search names…" />
+			</div>
+		</div>
+
+		{
+			total > 0 ? (
+				<>
+					<p class="browse__status sr-only" data-browse-status aria-live="polite">
+						{initiallyVisible === total && !initialQuery && initialCategory === 'all'
+							? `${total} specimens`
+							: `Showing ${initiallyVisible} of ${total}`}
+					</p>
+					<ul class="browse__grid" role="list">
+						{entries.map((entry) => (
+							<li>
+								<BacteriumCard
+									slug={entry.id}
+									commonName={entry.data.commonName}
+									scientificName={entry.data.scientificName}
+									image={entry.data.image}
+									shape={entry.data.shape}
+									tags={entry.data.tags}
+									caption={entry.data.caption}
+									hidden={
+										!matchesFilters(entry.data, {
+											category: initialCategory,
+											query: initialQuery,
+										})
+									}
+								/>
+							</li>
+						))}
+					</ul>
+					<p class="browse__empty" data-browse-empty hidden={initiallyVisible > 0 || undefined}>
+						No specimens match this search or category.
+					</p>
+				</>
+			) : (
+				<p class="browse__empty" data-browse-empty>
+					No specimens yet — the gallery will fill in as entries are curated.
+				</p>
+			)
+		}
+	</section>
+</BaseLayout>

@@ -1,0 +1,90 @@
+---
+/**
+ * Matches DEFAULT_DISCLAIMER in content.config.ts — kept local so this
+ * component does not import the content collection module at build time.
+ */
+const DEFAULT_BANNER_MESSAGE =
+	'Educational and prompt use only. Not for culturing, isolation, weaponization, or home-lab recipes.';
+
+interface Props {
+	/** Short disclaimer text. Defaults to the shared educational disclaimer. */
+	message?: string;
+	/** Show a link to /about for the full safety stance. Default: true. */
+	showAboutLink?: boolean;
+	/** Tighter padding and smaller type for detail panels. Default: false. */
+	compact?: boolean;
+}
+
+const {
+	message = DEFAULT_BANNER_MESSAGE,
+	showAboutLink = true,
+	compact = false,
+} = Astro.props;
+---
+
+<aside
+	class:list={['safety-banner', { 'safety-banner--compact': compact }]}
+	role="note"
+	aria-label="Safety disclaimer"
+>
+	<p class="safety-banner__text">{message}</p>
+	{
+		showAboutLink && (
+			<p class="safety-banner__meta">
+				<a class="safety-banner__link" href="/about">Read our safety stance</a>
+			</p>
+		)
+	}
+</aside>
+
+<style>
+	.safety-banner {
+		display: grid;
+		gap: var(--space-2);
+		padding: var(--space-4) var(--space-5);
+		border: 1px solid var(--color-border);
+		border-left: 3px solid var(--color-accent-soft);
+		border-radius: var(--radius-md);
+		background: var(--color-surface);
+	}
+
+	.safety-banner--compact {
+		padding: var(--space-3) var(--space-4);
+		gap: var(--space-1);
+	}
+
+	.safety-banner__text {
+		margin: 0;
+		color: var(--color-text);
+		font-size: var(--text-sm);
+		line-height: var(--leading-snug);
+	}
+
+	.safety-banner--compact .safety-banner__text {
+		font-size: var(--text-xs);
+	}
+
+	.safety-banner__meta {
+		margin: 0;
+		font-size: var(--text-xs);
+		color: var(--color-text-muted);
+	}
+
+	.safety-banner__link {
+		color: var(--color-accent-soft);
+		text-decoration: none;
+		font-weight: 500;
+	}
+
+	.safety-banner__link:hover {
+		color: var(--color-text);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.safety-banner__link:focus-visible {
+		outline: 2px solid var(--color-amber);
+		outline-offset: 3px;
+		border-radius: var(--radius-sm);
+	}
+</style>

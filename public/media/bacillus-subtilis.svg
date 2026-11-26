@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Bacillus subtilis rods">
+  <defs>
+    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#24302b"/>
+      <stop offset="45%" stop-color="#141c19"/>
+      <stop offset="100%" stop-color="#080c0b"/>
+    </radialGradient>
+    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
+      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
+      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
+      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
+    </radialGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
+      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" fill="#070b0a"/>
+  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
+  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
+  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
+  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
+  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
+  <g fill="#c9a66b" opacity="0.9" filter="url(#glow)">
+    <ellipse cx="240" cy="190" rx="48" ry="15" transform="rotate(-30 240 190)"/>
+    <ellipse cx="355" cy="185" rx="50" ry="15" transform="rotate(15 355 185)"/>
+    <ellipse cx="300" cy="250" rx="52" ry="16" transform="rotate(-5 300 250)"/>
+    <ellipse cx="400" cy="275" rx="46" ry="14" transform="rotate(28 400 275)"/>
+    <ellipse cx="230" cy="290" rx="44" ry="14" transform="rotate(-20 230 290)"/>
+  </g>
+  <g fill="#8a7043" opacity="0.7">
+    <circle cx="255" cy="188" r="5"/>
+    <circle cx="370" cy="182" r="5"/>
+    <circle cx="285" cy="248" r="5"/>
+  </g>
+  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">B. subtilis · rod · specimen still</text>
+</svg>

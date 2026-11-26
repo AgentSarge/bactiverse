@@ -1,0 +1,86 @@
+---
+/**
+ * Large specimen preview. `mediaKind` is `still` in MVP;
+ * `loop` / `viewer` reserved for later without redesigning the page.
+ */
+export interface Props {
+	image: string;
+	caption: string;
+	alt: string;
+	mediaKind?: 'still' | 'loop' | 'viewer';
+}
+
+const { image, caption, alt, mediaKind = 'still' } = Astro.props;
+---
+
+<figure class="preview-stage" data-media-kind={mediaKind}>
+	<div class="preview-stage__frame">
+		{
+			mediaKind === 'still' ? (
+				<img
+					class="preview-stage__media"
+					src={image}
+					alt={alt}
+					width="960"
+					height="720"
+					loading="eager"
+					decoding="async"
+				/>
+			) : (
+				<div class="preview-stage__placeholder" role="img" aria-label={alt}>
+					<p class="preview-stage__placeholder-label">
+						{mediaKind === 'loop' ? 'Loop preview coming later' : 'Interactive viewer coming later'}
+					</p>
+				</div>
+			)
+		}
+	</div>
+	<figcaption class="preview-stage__caption">{caption}</figcaption>
+</figure>
+
+<style>
+	.preview-stage {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		background: var(--color-bg);
+	}
+
+	.preview-stage__frame {
+		position: relative;
+		min-height: 280px;
+		aspect-ratio: 4 / 3;
+		background: #e8e8e8;
+		overflow: hidden;
+	}
+
+	.preview-stage__media {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.preview-stage__placeholder {
+		display: grid;
+		place-items: center;
+		width: 100%;
+		height: 100%;
+		min-height: 280px;
+		padding: var(--space-6);
+		color: #525252;
+		font-size: var(--text-sm);
+		text-align: center;
+		background: #e8e8e8;
+	}
+
+	.preview-stage__caption {
+		font-size: var(--text-sm);
+		line-height: var(--leading-snug);
+		color: var(--color-text-muted);
+		padding: var(--space-3) var(--space-4);
+		border-top: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+</style>

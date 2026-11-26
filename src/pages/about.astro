@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SafetyBanner from '../components/SafetyBanner.astro';
+import '../styles/about.css';
+---
+
+<BaseLayout
+	title="About"
+	description="What Bactiverse is, how Copy prompt works, and our educational safety stance."
+	hideRail
+>
+	<article class="about page-enter">
+		<header class="about__intro">
+			<h1 id="about-heading">About Bactiverse</h1>
+			<p class="about__lede">
+				Bactiverse is an open gallery of bacteria. Each entry pairs a specimen visual with a
+				plain-language science pack you can copy as a prompt into your own study notes or writing
+				tools.
+			</p>
+			<p class="about__cta">
+				<a href="/">Browse the gallery</a>
+			</p>
+		</header>
+
+		<section class="about__section" aria-labelledby="what-heading">
+			<h2 id="what-heading">What this is</h2>
+			<p>
+				Browse the catalogue, open an organism, and read what it looks like, where it lives, and
+				what it is famous for — in everyday language. Sources are listed on every detail page so you
+				can check the grounding yourself.
+			</p>
+			<p>
+				This is a thinking and writing aid, not a textbook replacement and not a lab manual.
+			</p>
+		</section>
+
+		<section class="about__section" aria-labelledby="prompt-heading">
+			<h2 id="prompt-heading">How Copy prompt works</h2>
+			<p>
+				On a detail page, <strong>Copy prompt</strong> builds a short text pack from that entry’s
+				facts — identity, traits, and study or writing ideas — then puts it on your clipboard.
+			</p>
+			<ul class="about__list">
+				<li>Paste it into your notes or an LLM chat.</li>
+				<li>Fill in the blank: <em>I’m using this for: ___</em></li>
+				<li>
+					Ask for study planning or a plain-language writeup. The prompt tells the model not to
+					invent facts and to refuse dangerous lab instructions.
+				</li>
+			</ul>
+			<p>
+				Nothing leaves your browser when you copy — the text is assembled on the page from the
+				entry you already opened.
+			</p>
+		</section>
+
+		<section id="safety" class="about__section about__safety" aria-labelledby="safety-heading">
+			<h2 id="safety-heading">Safety stance</h2>
+			<SafetyBanner showAboutLink={false} />
+			<p>
+				Bactiverse is for education and research writing only. It helps you explore organisms as
+				ideas — for essays, study plans, and grounded conversations with AI tools.
+			</p>
+			<ul class="about__refuse" aria-label="What we do not provide">
+				<li>No culturing, isolation, or growth instructions</li>
+				<li>No weaponization or dual-use how-tos</li>
+				<li>No “grow this at home” or other wet-lab recipes</li>
+			</ul>
+			<p class="about__closing">
+				If you need hands-on microbiology, use a qualified lab, course, or professional setting —
+				not this site.
+			</p>
+		</section>
+	</article>
+</BaseLayout>

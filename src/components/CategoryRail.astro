@@ -1,0 +1,260 @@
+---
+import { BROWSE_CATEGORIES, type BrowseCategoryId } from '../lib/filters';
+
+interface Props {
+	active?: BrowseCategoryId;
+}
+
+const { active = 'all' } = Astro.props;
+---
+
+<nav class="category-rail" aria-label="Browse categories" data-category-rail>
+	<ul class="category-rail__list" role="list">
+		{
+			BROWSE_CATEGORIES.map((category) => (
+				<li>
+					<a
+						class:list={['category-rail__btn', { 'is-active': category.id === active }]}
+						href={category.id === 'all' ? '/' : `/?category=${category.id}`}
+						data-category={category.id}
+						aria-current={category.id === active ? 'page' : undefined}
+					>
+						<span class="category-rail__icon" aria-hidden="true">
+							{category.id === 'all' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+								</svg>
+							)}
+							{category.id === 'rod' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M7 12h10" />
+									<circle cx="7" cy="12" r="2.5" fill="currentColor" />
+									<circle cx="17" cy="12" r="2.5" fill="currentColor" />
+								</svg>
+							)}
+							{category.id === 'spherical' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<circle cx="12" cy="12" r="6" stroke="currentColor" stroke-width="2" />
+								</svg>
+							)}
+							{category.id === 'spiral' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-width="2"
+										d="M12 5c3 0 5 2 5 4s-2 3-5 3-4 1-4 3 2 4 5 4"
+									/>
+								</svg>
+							)}
+							{category.id === 'extreme' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M13 3 6 14h5l-1 7 8-12h-5z"
+									/>
+								</svg>
+							)}
+							{category.id === 'human-related' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Zm0 2c-4 0-7 2-7 4v1h14v-1c0-2-3-4-7-4Z"
+									/>
+								</svg>
+							)}
+							{category.id === 'biotech' && (
+								<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24">
+									<path
+										stroke="currentColor"
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 3v6l-4 8a3 3 0 0 0 2.6 4.5h8.8A3 3 0 0 0 19 17l-4-8V3M9 3h6"
+									/>
+								</svg>
+							)}
+						</span>
+						<span class="category-rail__label">{category.label}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+	<aside class="category-rail__note">
+		<div class="category-rail__slot">
+			<p>Educational and prompt use only. Not a lab manual.</p>
+			<a href="/about#safety">Read the safety stance</a>
+		</div>
+	</aside>
+</nav>
+
+<nav class="category-rail category-rail--mobile" aria-label="Browse categories (mobile)" data-category-rail>
+	<ul class="category-rail__list" role="list">
+		{
+			BROWSE_CATEGORIES.map((category) => (
+				<li>
+					<a
+						class:list={['category-rail__btn', { 'is-active': category.id === active }]}
+						href={category.id === 'all' ? '/' : `/?category=${category.id}`}
+						data-category={category.id}
+						aria-current={category.id === active ? 'page' : undefined}
+					>
+						<span class="category-rail__label">{category.label}</span>
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>
+
+<style>
+	.category-rail {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+		min-height: 0;
+	}
+
+	.category-rail--mobile {
+		display: block;
+		height: auto;
+		min-height: 0;
+		margin-bottom: var(--space-4);
+	}
+
+	@media (min-width: 80rem) {
+		.category-rail--mobile {
+			display: none;
+		}
+	}
+
+	.category-rail__list {
+		display: flex;
+		flex-direction: column;
+		gap: 0;
+		flex: 1;
+		min-height: 0;
+		overflow: auto;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		scrollbar-width: thin;
+		scrollbar-color: transparent transparent;
+	}
+
+	.category-rail--mobile .category-rail__list {
+		flex-direction: row;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		gap: 0.35rem;
+		padding-bottom: 0.25rem;
+		scrollbar-width: thin;
+	}
+
+	.category-rail__btn {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		width: 100%;
+		margin-bottom: 0.25rem;
+		text-align: left;
+		padding: 0.625rem 1rem 0.625rem 0.75rem;
+		border: 0;
+		border-radius: 0.5rem;
+		background: transparent;
+		color: var(--color-text-secondary);
+		font-size: 0.875rem;
+		font-weight: 400;
+		letter-spacing: 0.025em;
+		text-decoration: none;
+		cursor: pointer;
+		transition:
+			color var(--duration-fast) ease,
+			background var(--duration-fast) ease;
+	}
+
+	.category-rail--mobile .category-rail__btn {
+		width: auto;
+		white-space: nowrap;
+		padding: 0.45rem 0.75rem;
+		border: 1px solid var(--color-border);
+		background: var(--color-surface);
+	}
+
+	.category-rail__btn:hover,
+	.category-rail__btn.is-active {
+		color: var(--color-text);
+		background: var(--color-hover);
+	}
+
+	.category-rail__note {
+		display: none;
+		flex-shrink: 0;
+		box-sizing: border-box;
+		width: 200px;
+		height: 286px;
+		margin-top: auto;
+		padding: 0.5rem 0.5rem 0.5rem 0.25rem;
+	}
+
+	.category-rail:not(.category-rail--mobile) .category-rail__note {
+		display: block;
+	}
+
+	.category-rail__slot {
+		width: 180px;
+		height: 250px;
+		margin-inline: auto;
+		padding: 0.85rem;
+		border-radius: 0.5rem;
+		background: var(--color-slot-bg);
+		border: 1px solid var(--color-slot-border);
+	}
+
+	.category-rail__note p {
+		margin: 0 0 0.4rem;
+		font-size: 0.75rem;
+		line-height: 1.4;
+		color: var(--color-slot-text);
+	}
+
+	.category-rail__note a {
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--color-text);
+		text-decoration: none;
+	}
+
+	.category-rail__note a:hover {
+		color: var(--color-text);
+	}
+
+	.category-rail--mobile .category-rail__note {
+		display: none;
+	}
+
+	.category-rail__icon {
+		display: inline-flex;
+		flex-shrink: 0;
+		width: 20px;
+		height: 20px;
+		opacity: 0.9;
+	}
+
+	.category-rail__icon svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.category-rail__btn:focus-visible {
+		outline: 2px solid var(--color-accent-soft);
+		outline-offset: 2px;
+	}
+</style>

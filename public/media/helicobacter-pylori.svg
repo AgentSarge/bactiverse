@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Helicobacter pylori spirals">
+  <defs>
+    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
+      <stop offset="0%" stop-color="#24302b"/>
+      <stop offset="45%" stop-color="#141c19"/>
+      <stop offset="100%" stop-color="#080c0b"/>
+    </radialGradient>
+    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
+      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
+      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
+      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
+    </radialGradient>
+    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
+      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.4"/>
+    </filter>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="480" fill="#070b0a"/>
+  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
+  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
+  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
+  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
+  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
+  <g fill="none" stroke="#c9a66b" stroke-width="5" stroke-linecap="round" opacity="0.9" filter="url(#glow)">
+    <path d="M220 200 C240 170, 260 230, 280 200 S320 170, 340 200"/>
+    <path d="M280 280 C300 250, 320 310, 340 280 S380 250, 400 280"/>
+    <path d="M360 180 C380 155, 400 205, 420 180"/>
+    <path d="M200 270 C220 245, 240 295, 260 270"/>
+  </g>
+  <g stroke="#8a7043" stroke-width="2" opacity="0.7">
+    <line x1="220" y1="200" x2="210" y2="185"/><line x1="235" y1="185" x2="228" y2="172"/>
+    <line x1="280" y1="280" x2="268" y2="265"/><line x1="300" y1="265" x2="292" y2="252"/>
+  </g>
+  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">H. pylori · spiral · specimen still</text>
+</svg>

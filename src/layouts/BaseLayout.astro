@@ -1,0 +1,75 @@
+---
+import SiteHeader from '../components/SiteHeader.astro';
+import CategoryRail from '../components/CategoryRail.astro';
+import { parseBrowseCategory } from '../lib/filters';
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+	/** Hide the left category rail (e.g. About). Default false. */
+	hideRail?: boolean;
+}
+
+const {
+	title = 'Bactiverse',
+	description = 'An open gallery of bacteria — browse specimen visuals and copy grounded science prompts for study and writing.',
+	hideRail = false,
+} = Astro.props;
+
+const pageTitle = title === 'Bactiverse' ? title : `${title} · Bactiverse`;
+const activeCategory = parseBrowseCategory(Astro.url.searchParams.get('category'));
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+			rel="stylesheet"
+		/>
+		<title>{pageTitle}</title>
+		<script is:inline>
+			if (localStorage.getItem('theme') === 'light') {
+				document.documentElement.dataset.theme = 'light';
+			}
+		</script>
+	</head>
+	<body>
+		<a class="skip-link" href="#main-content">Skip to content</a>
+		<div class="site-shell">
+			<SiteHeader />
+			<div class:list={['site-body', { 'site-body--solo': hideRail }]}>
+				{
+					!hideRail && (
+						<aside class="site-body__rail" aria-label="Categories">
+							<CategoryRail active={activeCategory} />
+						</aside>
+					)
+				}
+				<main id="main-content" class="site-main" tabindex="-1">
+					<slot />
+				</main>
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+	.site-body--solo {
+		grid-template-columns: 1fr;
+		max-width: 52rem;
+	}
+
+	.site-body--solo .site-main {
+		width: 100%;
+	}
+</style>

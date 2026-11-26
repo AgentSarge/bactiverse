@@ -1,0 +1,166 @@
+---
+import { tagLabel } from '../lib/filters';
+
+interface Props {
+	slug: string;
+	commonName: string;
+	scientificName: string;
+	image: string;
+	shape: string;
+	tags: string[];
+	caption?: string;
+	hidden?: boolean;
+}
+
+const { slug, commonName, scientificName, image, shape, tags, caption, hidden = false } =
+	Astro.props;
+const href = `/b/${slug}`;
+const alt = caption?.trim()
+	? `${commonName} (${scientificName}): ${caption.trim()}`
+	: `${commonName} (${scientificName}) specimen preview`;
+const primaryTag = tags[0] ? tagLabel(tags[0]) : shape;
+---
+
+<article
+	class="bacterium-card"
+	data-bacterium-card
+	data-slug={slug}
+	data-common-name={commonName}
+	data-scientific-name={scientificName}
+	data-shape={shape}
+	data-tags={tags.join(',')}
+	hidden={hidden || undefined}
+>
+	<div class="bacterium-card__preview">
+		<img
+			class="bacterium-card__img"
+			src={image}
+			alt={alt}
+			width="480"
+			height="360"
+			loading="lazy"
+			decoding="async"
+		/>
+		<div class="bacterium-card__hover">
+			<a class="bacterium-card__action bacterium-card__action--primary" href={href}>View</a>
+			<a class="bacterium-card__action" href={`${href}#prompt`}>Copy prompt</a>
+		</div>
+	</div>
+	<div class="bacterium-card__meta">
+		<a class="bacterium-card__name" href={href}>{commonName}</a>
+		<span class="bacterium-card__stat">{primaryTag}</span>
+	</div>
+</article>
+
+<style>
+	.bacterium-card {
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.65rem;
+	}
+
+	.bacterium-card[hidden] {
+		display: none;
+	}
+
+	.bacterium-card__preview {
+		position: relative;
+		min-height: 220px;
+		border-radius: 12px;
+		background: var(--color-card);
+		overflow: hidden;
+		isolation: isolate;
+	}
+
+	.bacterium-card__img {
+		width: 100%;
+		height: 100%;
+		min-height: 250px;
+		object-fit: cover;
+		object-position: center;
+	}
+
+	.bacterium-card__hover {
+		position: absolute;
+		inset: 0;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 0.5rem;
+		background: rgba(0, 0, 0, 0.45);
+		opacity: 0;
+		transition: opacity var(--duration-med) ease;
+		z-index: 2;
+	}
+
+	.bacterium-card__preview:hover .bacterium-card__hover,
+	.bacterium-card__preview:focus-within .bacterium-card__hover {
+		opacity: 1;
+	}
+
+	.bacterium-card__action {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 7.5rem;
+		padding: 0.45rem 0.9rem;
+		border-radius: 999px;
+		font-size: var(--text-sm);
+		font-weight: 600;
+		text-decoration: none;
+		color: var(--color-on-accent);
+		background: rgba(23, 23, 23, 0.92);
+		border: 1px solid rgba(255, 255, 255, 0.18);
+		transition: background var(--duration-fast) ease;
+	}
+
+	.bacterium-card__action:hover {
+		background: #111;
+		color: var(--color-on-accent);
+	}
+
+	.bacterium-card__action--primary {
+		background: var(--color-accent);
+		border-color: transparent;
+	}
+
+	.bacterium-card__action--primary:hover {
+		background: var(--color-accent-soft);
+		color: var(--color-on-accent);
+	}
+
+	.bacterium-card__meta {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.75rem;
+		min-width: 0;
+		padding-inline: 0.15rem;
+	}
+
+	.bacterium-card__name {
+		min-width: 0;
+		font-size: var(--text-sm);
+		font-weight: 500;
+		color: var(--color-card-name);
+		text-decoration: none;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	.bacterium-card__name:hover {
+		color: var(--color-text);
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
+	.bacterium-card__stat {
+		flex-shrink: 0;
+		font-size: var(--text-xs);
+		color: var(--color-text-faint);
+		font-weight: 500;
+	}
+</style>
