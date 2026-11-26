@@ -119,7 +119,7 @@ const chips = [...chipIds].map((id) => ({
 
 		<div class="detail-split">
 			<div class="detail-split__stage">
-				<PreviewStage image={data.image} alt={previewAlt} mediaKind={data.mediaKind} />
+				<PreviewStage shape={data.shape} slug={entry.id} alt={previewAlt} />
 			</div>
 			<div class="detail-split__editor">
 				<DetailTabs prompt={prompt} promptPeek={promptPeek} traits={data.traits} tags={data.tags}>

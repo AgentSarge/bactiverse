@@ -4,7 +4,6 @@ scientificName: Caulobacter crescentus
 description: A crescent-shaped aquatic bacterium used as a premier model for asymmetric cell division and cell-cycle control.
 caption: Stylized specimen plate showing crescent C. crescentus cells with stalk-like accents.
 image: /media/caulobacter-crescentus.svg
-mediaKind: still
 shape: rod
 tags:
   - biotech

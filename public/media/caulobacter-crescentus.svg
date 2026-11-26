@@ -1,44 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Caulobacter crescentus crescent cells">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Caulobacter crescentus crescent cells">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#24302b"/>
-      <stop offset="45%" stop-color="#141c19"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2ee6a6"/>
+      <stop offset="100%" stop-color="#136045"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#2ee6a6"/>
+      <stop offset="100%" stop-color="#11573f"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#1a5e6b"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#175560"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b6ff3e"/>
+      <stop offset="100%" stop-color="#4c6b1a"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#b6ff3e"/>
+      <stop offset="100%" stop-color="#456017"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#1ad1ff"/>
+      <stop offset="100%" stop-color="#0a576b"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#1ad1ff"/>
+      <stop offset="100%" stop-color="#094f60"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#2ee6a6" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#2ee6a6" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#2ee6a6" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="none" stroke="#6fbfa3" stroke-width="10" stroke-linecap="round" opacity="0.85" filter="url(#glow)">
-    <path d="M240 220 A28 28 0 0 1 280 250"/>
-    <path d="M320 180 A30 30 0 0 1 365 215"/>
-    <path d="M350 260 A28 28 0 0 1 390 295"/>
-    <path d="M220 280 A26 26 0 0 1 255 310"/>
-    <path d="M380 200 A24 24 0 0 1 415 230"/>
-  </g>
-  <g stroke="#3d7a66" stroke-width="2" opacity="0.7">
-    <line x1="240" y1="220" x2="225" y2="205"/>
-    <line x1="320" y1="180" x2="310" y2="160"/>
-    <line x1="220" y1="280" x2="205" y2="268"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">C. crescentus · rod · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <g transform="translate(230.0 210.0) rotate(-20.0) scale(1.00)" fill="none" stroke="#2ee6a6" stroke-linecap="round">
+      <path d="M -78 18 A 86 70 0 0 1 78 18" stroke-width="26"/>
+      <path d="M 78 18 L 118 52" stroke-width="7"/>
+      <path d="M -62 6 A 70 54 0 0 1 40 4" stroke="#ffffff" stroke-width="6" opacity="0.35"/>
+    </g>
+    <g transform="translate(420.0 250.0) rotate(30.0) scale(0.92)" fill="none" stroke="#3ee0ff" stroke-linecap="round">
+      <path d="M -78 18 A 86 70 0 0 1 78 18" stroke-width="26"/>
+      <path d="M 78 18 L 118 52" stroke-width="7"/>
+      <path d="M -62 6 A 70 54 0 0 1 40 4" stroke="#ffffff" stroke-width="6" opacity="0.35"/>
+    </g>
+    <g transform="translate(300.0 340.0) rotate(-8.0) scale(0.78)" fill="none" stroke="#b6ff3e" stroke-linecap="round">
+      <path d="M -78 18 A 86 70 0 0 1 78 18" stroke-width="26"/>
+      <path d="M 78 18 L 118 52" stroke-width="7"/>
+      <path d="M -62 6 A 70 54 0 0 1 40 4" stroke="#ffffff" stroke-width="6" opacity="0.35"/>
+    </g>
 </svg>

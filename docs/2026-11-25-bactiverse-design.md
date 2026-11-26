@@ -1,8 +1,15 @@
 # Bactiverse (working name) — Design Spec
 
 Date: 2026-11-25  
-Status: Draft for user review  
-Host: Cloudflare Pages
+Status: Original product spec. The shipped site has moved on.  
+Current architecture: [codebase.md](./codebase.md)
+
+The sections below are the spec this repo was built from. Where they disagree with the code, trust `docs/codebase.md` and the source. Notable shipped differences:
+
+- The site is Astro (static) with a React island for clipboard copy and a Three.js colony viewer. It is dark only.
+- Every detail page renders a live 3D colony. Four browse cards do too (`src/lib/live-specimens.ts`). The other browse cards use SVG stills in `public/media/`.
+- The detail panel is Agent / Prompt / Facts. Sources and the safety note sit in the aside, not in a fourth tab.
+- The action bar (Save to favorites, Copy to Figma, Export, React) and the 21K / 1.4K counts are visual placeholders. Copy prompt in the Agent panel is the working clipboard action.
 
 ## 1. Problem and goal
 

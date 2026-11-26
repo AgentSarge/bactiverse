@@ -4,7 +4,6 @@ scientificName: Streptococcus thermophilus
 description: A heat-tolerant lactic acid coccus used worldwide in yogurt and cheese fermentation starter cultures.
 caption: Stylized specimen plate showing S. thermophilus cells arranged in chains.
 image: /media/streptococcus-thermophilus.svg
-mediaKind: still
 shape: spherical
 tags:
   - human-related

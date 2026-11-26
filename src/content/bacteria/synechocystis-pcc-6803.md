@@ -4,7 +4,6 @@ scientificName: Synechocystis sp. PCC 6803
 description: A unicellular cyanobacterium and leading model for studying oxygenic photosynthesis and cyanobacterial genetics.
 caption: Stylized specimen plate showing round Synechocystis cells with photosynthetic green tones.
 image: /media/synechocystis-pcc-6803.svg
-mediaKind: still
 shape: spherical
 tags:
   - biotech

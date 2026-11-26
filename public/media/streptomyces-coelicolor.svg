@@ -1,43 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Streptomyces coelicolor filaments">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Streptomyces coelicolor filaments">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#221c2a"/>
-      <stop offset="45%" stop-color="#14121a"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4d7cff"/>
+      <stop offset="100%" stop-color="#20346b"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#4d7cff"/>
+      <stop offset="100%" stop-color="#1d2f60"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#1a5e6b"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#175560"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b45bff"/>
+      <stop offset="100%" stop-color="#4b266b"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#b45bff"/>
+      <stop offset="100%" stop-color="#442260"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a5cff"/>
+      <stop offset="100%" stop-color="#2c266b"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#6a5cff"/>
+      <stop offset="100%" stop-color="#282260"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#4d7cff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#4d7cff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#4d7cff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="none" stroke="#6fbfa3" stroke-width="2.5" stroke-linecap="round" opacity="0.75" filter="url(#glow)">
-    <path d="M320 300 C300 260, 280 220, 260 180"/><path d="M320 300 C340 255, 360 215, 385 175"/>
-    <path d="M320 300 C290 270, 250 250, 210 230"/><path d="M320 300 C350 275, 390 260, 430 245"/>
-    <path d="M320 300 C310 250, 320 200, 330 160"/><path d="M320 300 C280 280, 240 290, 200 300"/>
-    <path d="M320 300 C360 285, 400 295, 440 310"/>
-  </g>
-  <g fill="#5a4a8a" opacity="0.7">
-    <circle cx="260" cy="180" r="6"/><circle cx="385" cy="175" r="6"/>
-    <circle cx="210" cy="230" r="5"/><circle cx="430" cy="245" r="5"/>
-    <circle cx="330" cy="160" r="6"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">S. coelicolor · filamentous · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <path d="M 250 340 L 300 150" stroke="#4d7cff" stroke-width="14" stroke-linecap="round"/>
+    <path d="M 300 300 L 250 120" stroke="#3ee0ff" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 300 300 L 390 140" stroke="#b45bff" stroke-width="12" stroke-linecap="round"/>
+    <path d="M 390 210 L 450 120" stroke="#6a5cff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 250 200 L 180 110" stroke="#3ee0ff" stroke-width="9" stroke-linecap="round"/>
+    <path d="M 330 180 L 360 90" stroke="#4d7cff" stroke-width="8" stroke-linecap="round"/>
 </svg>

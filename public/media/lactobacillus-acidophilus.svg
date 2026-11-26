@@ -1,43 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Lactobacillus acidophilus rods">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Lactobacillus acidophilus rods in short chains">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#24302b"/>
-      <stop offset="45%" stop-color="#141c19"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c6ff3a"/>
+      <stop offset="100%" stop-color="#536b18"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#c6ff3a"/>
+      <stop offset="100%" stop-color="#4b6016"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7dff6a"/>
+      <stop offset="100%" stop-color="#346b2c"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#7dff6a"/>
+      <stop offset="100%" stop-color="#2f6028"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8ff5a"/>
+      <stop offset="100%" stop-color="#616b25"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#e8ff5a"/>
+      <stop offset="100%" stop-color="#586022"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3dffc8"/>
+      <stop offset="100%" stop-color="#196b54"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#3dffc8"/>
+      <stop offset="100%" stop-color="#17604c"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#c6ff3a" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#c6ff3a" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#c6ff3a" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="#6fbfa3" opacity="0.8" filter="url(#glow)">
-    <ellipse cx="260" cy="180" rx="28" ry="11" transform="rotate(40 260 180)"/>
-    <ellipse cx="295" cy="205" rx="28" ry="11" transform="rotate(40 295 205)"/>
-    <ellipse cx="330" cy="230" rx="28" ry="11" transform="rotate(40 330 230)"/>
-    <ellipse cx="365" cy="255" rx="28" ry="11" transform="rotate(40 365 255)"/>
-    <ellipse cx="220" cy="240" rx="26" ry="10" transform="rotate(-35 220 240)"/>
-    <ellipse cx="255" cy="265" rx="26" ry="10" transform="rotate(-35 255 265)"/>
-    <ellipse cx="290" cy="290" rx="26" ry="10" transform="rotate(-35 290 290)"/>
-    <ellipse cx="380" cy="200" rx="27" ry="10" transform="rotate(10 380 200)"/>
-    <ellipse cx="400" cy="230" rx="27" ry="10" transform="rotate(10 400 230)"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">L. acidophilus · rod · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <g transform="translate(210.0 190.0) rotate(42.0)">
+      <rect x="-59.0" y="-18.0" width="118.0" height="36.0" rx="18.0" fill="url(#c0)"/>
+      <rect x="-40.1" y="-14.0" width="44.8" height="10.1" rx="5.0" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(292.0 262.0) rotate(42.0)">
+      <rect x="-59.0" y="-18.0" width="118.0" height="36.0" rx="18.0" fill="url(#c1)"/>
+      <rect x="-40.1" y="-14.0" width="44.8" height="10.1" rx="5.0" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(374.0 334.0) rotate(42.0)">
+      <rect x="-59.0" y="-18.0" width="118.0" height="36.0" rx="18.0" fill="url(#c2)"/>
+      <rect x="-40.1" y="-14.0" width="44.8" height="10.1" rx="5.0" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(430.0 168.0) rotate(-28.0)">
+      <rect x="-55.0" y="-17.0" width="110.0" height="34.0" rx="17.0" fill="url(#c3)"/>
+      <rect x="-37.4" y="-13.3" width="41.8" height="9.5" rx="4.8" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(500.0 214.0) rotate(-28.0)">
+      <rect x="-55.0" y="-17.0" width="110.0" height="34.0" rx="17.0" fill="url(#c0)"/>
+      <rect x="-37.4" y="-13.3" width="41.8" height="9.5" rx="4.8" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(168.0 300.0) rotate(8.0)">
+      <rect x="-50.0" y="-16.0" width="100.0" height="32.0" rx="16.0" fill="url(#c2)"/>
+      <rect x="-34.0" y="-12.5" width="38.0" height="9.0" rx="4.5" fill="url(#shine)"/>
+    </g>
 </svg>

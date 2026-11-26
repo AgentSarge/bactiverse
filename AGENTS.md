@@ -1,3 +1,7 @@
+## This project
+
+Bactiverse is a static Astro gallery of bacteria. Read [docs/codebase.md](docs/codebase.md) before changing pages, content, or the 3D viewer. The original product spec is [docs/2026-11-25-bactiverse-design.md](docs/2026-11-25-bactiverse-design.md). Where they disagree, the codebase doc and the source win.
+
 ## Development
 
 When starting the dev server, use background mode:

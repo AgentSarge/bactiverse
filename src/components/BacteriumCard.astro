@@ -1,24 +1,26 @@
 ---
 import { tagLabel } from '../lib/filters';
+import { isLiveSpecimen } from '../lib/live-specimens';
+import SpecimenViewer from './SpecimenViewer';
 
 interface Props {
 	slug: string;
 	commonName: string;
 	scientificName: string;
 	image: string;
-	shape: string;
+	shape: 'rod' | 'spherical' | 'spiral' | 'other';
 	tags: string[];
 	caption?: string;
 	hidden?: boolean;
 }
 
-const { slug, commonName, scientificName, image, shape, tags, caption, hidden = false } =
-	Astro.props;
+const { slug, commonName, scientificName, image, shape, tags, caption, hidden = false } = Astro.props;
 const href = `/b/${slug}`;
 const alt = caption?.trim()
 	? `${commonName} (${scientificName}): ${caption.trim()}`
 	: `${commonName} (${scientificName}) specimen preview`;
 const primaryTag = tags[0] ? tagLabel(tags[0]) : shape;
+const live = isLiveSpecimen(slug);
 ---
 
 <article
@@ -32,15 +34,21 @@ const primaryTag = tags[0] ? tagLabel(tags[0]) : shape;
 	hidden={hidden || undefined}
 >
 	<div class="bacterium-card__preview">
-		<img
-			class="bacterium-card__img"
-			src={image}
-			alt={alt}
-			width="480"
-			height="360"
-			loading="lazy"
-			decoding="async"
-		/>
+		{
+			live ? (
+				<SpecimenViewer client:visible shape={shape} slug={slug} label={alt} motion="play" quality="card" />
+			) : (
+				<img
+					class="bacterium-card__img"
+					src={image}
+					alt={alt}
+					width="960"
+					height="720"
+					loading="lazy"
+					decoding="async"
+				/>
+			)
+		}
 		<div class="bacterium-card__hover">
 			<a class="bacterium-card__action bacterium-card__action--primary" href={href}>View</a>
 			<a class="bacterium-card__action" href={`${href}#prompt`}>Copy prompt</a>
@@ -81,15 +89,29 @@ const primaryTag = tags[0] ? tagLabel(tags[0]) : shape;
 		object-position: center;
 	}
 
+	.bacterium-card__preview:has(.specimen-viewer) {
+		height: 250px;
+	}
+
+	.bacterium-card__preview :global(.specimen-viewer),
+	.bacterium-card__preview :global(.specimen-viewer canvas) {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		display: block;
+	}
+
 	.bacterium-card__hover {
 		position: absolute;
 		inset: 0;
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-end;
 		gap: 0.5rem;
-		background: rgba(0, 0, 0, 0.45);
+		padding-bottom: 1rem;
+		background: linear-gradient(to top, rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.08) 46%, transparent 70%);
 		opacity: 0;
 		transition: opacity var(--duration-med) ease;
 		z-index: 2;

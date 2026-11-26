@@ -4,7 +4,6 @@ scientificName: Deinococcus radiodurans
 description: An extraordinarily radiation-resistant coccus famous for surviving doses of ionizing radiation that would kill most other organisms.
 caption: Stylized specimen plate showing D. radiodurans cells in characteristic tetrads.
 image: /media/deinococcus-radiodurans.svg
-mediaKind: still
 shape: spherical
 tags:
   - extreme

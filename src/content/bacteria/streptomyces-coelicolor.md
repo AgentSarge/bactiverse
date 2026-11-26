@@ -4,7 +4,6 @@ scientificName: Streptomyces coelicolor
 description: A filamentous soil bacterium and model streptomycete famous for producing colored antibiotics and complex secondary metabolites.
 caption: Stylized specimen plate showing branching Streptomyces-like filaments with pigment hints.
 image: /media/streptomyces-coelicolor.svg
-mediaKind: still
 shape: other
 tags:
   - biotech

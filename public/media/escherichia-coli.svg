@@ -1,40 +1,63 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Escherichia coli rods">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Escherichia coli rods">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#24302b"/>
-      <stop offset="45%" stop-color="#141c19"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#1a5e6b"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#175560"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4d7cff"/>
+      <stop offset="100%" stop-color="#20346b"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#4d7cff"/>
+      <stop offset="100%" stop-color="#1d2f60"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#7af0ff"/>
+      <stop offset="100%" stop-color="#33646b"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#7af0ff"/>
+      <stop offset="100%" stop-color="#2e5b60"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2f6bff"/>
+      <stop offset="100%" stop-color="#132c6b"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#2f6bff"/>
+      <stop offset="100%" stop-color="#112860"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#3ee0ff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#3ee0ff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#3ee0ff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="#6fbfa3" opacity="0.9" filter="url(#glow)">
-    <ellipse cx="250" cy="200" rx="42" ry="14" transform="rotate(-18 250 200)"/>
-    <ellipse cx="340" cy="175" rx="38" ry="13" transform="rotate(12 340 175)"/>
-    <ellipse cx="390" cy="230" rx="44" ry="14" transform="rotate(-8 390 230)"/>
-    <ellipse cx="280" cy="270" rx="40" ry="13" transform="rotate(22 280 270)"/>
-    <ellipse cx="360" cy="295" rx="36" ry="12" transform="rotate(-25 360 295)"/>
-    <ellipse cx="210" cy="250" rx="34" ry="12" transform="rotate(5 210 250)"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">E. coli · rod · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <g transform="translate(220.0 180.0) rotate(-16.0)">
+      <rect x="-75.0" y="-20.0" width="150.0" height="40.0" rx="20.0" fill="url(#c0)"/>
+      <rect x="-51.0" y="-15.6" width="57.0" height="11.2" rx="5.6" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(390.0 200.0) rotate(20.0)">
+      <rect x="-70.0" y="-19.0" width="140.0" height="38.0" rx="19.0" fill="url(#c1)"/>
+      <rect x="-47.6" y="-14.8" width="53.2" height="10.6" rx="5.3" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(260.0 290.0) rotate(10.0)">
+      <rect x="-80.0" y="-21.0" width="160.0" height="42.0" rx="21.0" fill="url(#c2)"/>
+      <rect x="-54.4" y="-16.4" width="60.8" height="11.8" rx="5.9" fill="url(#shine)"/>
+    </g>
+    <g transform="translate(430.0 310.0) rotate(-28.0)">
+      <rect x="-65.0" y="-18.0" width="130.0" height="36.0" rx="18.0" fill="url(#c3)"/>
+      <rect x="-44.2" y="-14.0" width="49.4" height="10.1" rx="5.0" fill="url(#shine)"/>
+    </g>
 </svg>

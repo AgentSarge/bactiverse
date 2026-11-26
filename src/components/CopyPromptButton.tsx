@@ -1,16 +1,10 @@
 import { useId, useState } from 'react';
-import {
-	buildCopyPrompt,
-	buildFactsClipboard,
-	type BacteriaPromptEntry,
-} from '../lib/prompt';
+import { buildCopyPrompt, type BacteriaPromptEntry } from '../lib/prompt';
 
 /** Props for the Copy prompt island — mirrors BacteriaPromptEntry. */
 export interface CopyPromptButtonProps extends BacteriaPromptEntry {
 	/** Optional button label override. */
 	label?: string;
-	/** `pill` sits in the Agent panel; `bar` is a segment of the action bar. */
-	variant?: 'pill' | 'bar';
 }
 
 export default function CopyPromptButton({
@@ -21,7 +15,6 @@ export default function CopyPromptButton({
 	usefulFor,
 	disclaimer,
 	label = 'Copy prompt',
-	variant = 'pill',
 }: CopyPromptButtonProps) {
 	const text = buildCopyPrompt({
 		commonName,
@@ -33,44 +26,7 @@ export default function CopyPromptButton({
 	});
 
 	return (
-		<CopyTextButton
-			text={text}
-			label={label}
-			copiedLabel="Copied!"
-			announce="Prompt copied to clipboard"
-			variant={variant}
-			icon="copy"
-		/>
-	);
-}
-
-export interface CopyFactsButtonProps {
-	commonName: string;
-	scientificName: string;
-	traits: BacteriaPromptEntry['traits'];
-	label?: string;
-	variant?: 'pill' | 'bar';
-}
-
-/** Copies the trait block. Used in the desktop action bar. */
-export function CopyFactsButton({
-	commonName,
-	scientificName,
-	traits,
-	label = 'Copy facts',
-	variant = 'bar',
-}: CopyFactsButtonProps) {
-	const text = buildFactsClipboard({ commonName, scientificName, traits });
-
-	return (
-		<CopyTextButton
-			text={text}
-			label={label}
-			copiedLabel="Copied!"
-			announce="Facts copied to clipboard"
-			variant={variant}
-			icon="facts"
-		/>
+		<CopyTextButton text={text} label={label} copiedLabel="Copied!" announce="Prompt copied to clipboard" />
 	);
 }
 
@@ -79,15 +35,11 @@ function CopyTextButton({
 	label,
 	copiedLabel,
 	announce,
-	variant,
-	icon,
 }: {
 	text: string;
 	label: string;
 	copiedLabel: string;
 	announce: string;
-	variant: 'pill' | 'bar';
-	icon: 'copy' | 'facts';
 }) {
 	const statusId = useId();
 	const [copied, setCopied] = useState(false);
@@ -109,14 +61,14 @@ function CopyTextButton({
 	const announced = copied ? announce : error ? 'Copy failed — try again' : '';
 
 	return (
-		<div className={`copy-prompt${variant === 'bar' ? ' copy-prompt--bar' : ''}`}>
+		<div className="copy-prompt">
 			<button
 				type="button"
-				className={`copy-prompt__btn${variant === 'bar' ? ' copy-prompt__btn--bar' : ''}${copied ? ' is-copied' : ''}`}
+				className={`copy-prompt__btn${copied ? ' is-copied' : ''}`}
 				onClick={handleCopy}
 				aria-describedby={statusId}
 			>
-				{icon === 'facts' ? <FactsIcon /> : <CopyIcon />}
+				<CopyIcon />
 				{copied ? copiedLabel : label}
 			</button>
 			<span id={statusId} className="sr-only" role="status" aria-live="polite">
@@ -148,15 +100,3 @@ function CopyIcon() {
 	);
 }
 
-function FactsIcon() {
-	return (
-		<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-			<path d="M8 7.5h8M8 12h8M8 16.5h5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
-			<path
-				d="M7 4h7.2L19 8.7V19a1.5 1.5 0 0 1-1.5 1.5h-10A1.5 1.5 0 0 1 6 19V5.5A1.5 1.5 0 0 1 7.5 4H7Z"
-				stroke="currentColor"
-				strokeWidth="1.6"
-			/>
-		</svg>
-	);
-}

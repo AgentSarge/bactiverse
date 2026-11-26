@@ -4,7 +4,6 @@ scientificName: Bacillus subtilis
 description: A soil-dwelling Gram-positive rod known for forming tough endospores and for its role as a Gram-positive model organism.
 caption: Stylized specimen plate showing B. subtilis rods with spore-like accents.
 image: /media/bacillus-subtilis.svg
-mediaKind: still
 shape: rod
 tags:
   - biotech

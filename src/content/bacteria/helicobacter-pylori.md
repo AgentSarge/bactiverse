@@ -4,7 +4,6 @@ scientificName: Helicobacter pylori
 description: A spiral bacterium that colonizes the human stomach and is linked to gastritis, ulcers, and certain stomach cancers.
 caption: Stylized specimen plate showing helical H. pylori cells with flagellar hints.
 image: /media/helicobacter-pylori.svg
-mediaKind: still
 shape: spiral
 tags:
   - human-related

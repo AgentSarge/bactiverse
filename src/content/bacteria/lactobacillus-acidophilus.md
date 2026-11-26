@@ -4,7 +4,6 @@ scientificName: Lactobacillus acidophilus
 description: A lactic acid bacterium associated with fermented foods and the human gut, often discussed in probiotic and dairy science contexts.
 caption: Stylized specimen plate showing slender L. acidophilus rods in chains.
 image: /media/lactobacillus-acidophilus.svg
-mediaKind: still
 shape: rod
 tags:
   - human-related

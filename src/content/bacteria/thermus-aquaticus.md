@@ -4,7 +4,6 @@ scientificName: Thermus aquaticus
 description: A heat-loving rod from hot springs whose DNA polymerase (Taq) made modern PCR amplification practical.
 caption: Stylized specimen plate showing T. aquaticus rods against a warm thermal palette.
 image: /media/thermus-aquaticus.svg
-mediaKind: still
 shape: rod
 tags:
   - extreme

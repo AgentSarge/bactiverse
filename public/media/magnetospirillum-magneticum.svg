@@ -1,42 +1,53 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Magnetospirillum magneticum spirals">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Magnetospirillum magneticum spirals">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#24302b"/>
-      <stop offset="45%" stop-color="#141c19"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b45bff"/>
+      <stop offset="100%" stop-color="#4b266b"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#b45bff"/>
+      <stop offset="100%" stop-color="#442260"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6a7bff"/>
+      <stop offset="100%" stop-color="#2c336b"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#6a7bff"/>
+      <stop offset="100%" stop-color="#282e60"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff4fd8"/>
+      <stop offset="100%" stop-color="#6b215a"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#ff4fd8"/>
+      <stop offset="100%" stop-color="#601e52"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#1a5e6b"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#3ee0ff"/>
+      <stop offset="100%" stop-color="#175560"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#b45bff" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#b45bff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#b45bff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="none" stroke="#6fbfa3" stroke-width="4" stroke-linecap="round" opacity="0.9" filter="url(#glow)">
-    <path d="M200 240 C230 200, 260 280, 290 240 S350 200, 380 240 S440 280, 460 250"/>
-    <path d="M230 290 C255 260, 280 320, 305 290 S355 260, 380 295"/>
-    <path d="M250 180 C275 155, 300 205, 325 180 S375 155, 400 185"/>
-  </g>
-  <g fill="#c9a66b" opacity="0.95">
-    <circle cx="245" cy="220" r="3"/><circle cx="275" cy="250" r="3"/><circle cx="305" cy="225" r="3"/>
-    <circle cx="335" cy="245" r="3"/><circle cx="365" cy="230" r="3"/><circle cx="395" cy="250" r="3"/>
-    <circle cx="270" cy="285" r="2.5"/><circle cx="300" cy="295" r="2.5"/><circle cx="330" cy="280" r="2.5"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">M. magneticum · spiral · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <path d="M 150.0 190.0 L 154.2 197.0 L 158.5 203.5 L 162.8 209.2 L 167.0 213.6 L 171.2 216.6 L 175.5 217.9 L 179.8 217.5 L 184.0 215.3 L 188.2 211.6 L 192.5 206.5 L 196.8 200.3 L 201.0 193.5 L 205.2 186.5 L 209.5 179.7 L 213.8 173.5 L 218.0 168.4 L 222.2 164.7 L 226.5 162.5 L 230.8 162.1 L 235.0 163.4 L 239.2 166.4 L 243.5 170.8 L 247.8 176.5 L 252.0 183.0 L 256.2 190.0 L 260.5 197.0 L 264.8 203.5 L 269.0 209.2 L 273.2 213.6 L 277.5 216.6 L 281.8 217.9 L 286.0 217.5 L 290.2 215.3 L 294.5 211.6 L 298.8 206.5 L 303.0 200.3 L 307.2 193.5 L 311.5 186.5 L 315.8 179.7 L 320.0 173.5 L 324.2 168.4 L 328.5 164.7 L 332.8 162.5 L 337.0 162.1 L 341.2 163.4 L 345.5 166.4 L 349.8 170.8 L 354.0 176.5 L 358.2 183.0 L 362.5 190.0 L 366.8 197.0 L 371.0 203.5 L 375.2 209.2 L 379.5 213.6 L 383.8 216.6 L 388.0 217.9 L 392.2 217.5 L 396.5 215.3 L 400.8 211.6 L 405.0 206.5 L 409.2 200.3 L 413.5 193.5 L 417.8 186.5 L 422.0 179.7 L 426.2 173.5 L 430.5 168.4 L 434.8 164.7 L 439.0 162.5 L 443.2 162.1 L 447.5 163.4 L 451.8 166.4 L 456.0 170.8 L 460.2 176.5 L 464.5 183.0 L 468.8 190.0 L 473.0 197.0 L 477.2 203.5 L 481.5 209.2 L 485.8 213.6 L 490.0 216.6" fill="none" stroke="#b45bff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 150.0 190.0 L 154.2 197.0 L 158.5 203.5 L 162.8 209.2 L 167.0 213.6 L 171.2 216.6 L 175.5 217.9 L 179.8 217.5 L 184.0 215.3 L 188.2 211.6 L 192.5 206.5 L 196.8 200.3 L 201.0 193.5 L 205.2 186.5 L 209.5 179.7 L 213.8 173.5 L 218.0 168.4 L 222.2 164.7 L 226.5 162.5 L 230.8 162.1 L 235.0 163.4 L 239.2 166.4 L 243.5 170.8 L 247.8 176.5 L 252.0 183.0 L 256.2 190.0 L 260.5 197.0 L 264.8 203.5 L 269.0 209.2 L 273.2 213.6 L 277.5 216.6 L 281.8 217.9 L 286.0 217.5 L 290.2 215.3 L 294.5 211.6 L 298.8 206.5 L 303.0 200.3 L 307.2 193.5 L 311.5 186.5 L 315.8 179.7 L 320.0 173.5 L 324.2 168.4 L 328.5 164.7 L 332.8 162.5 L 337.0 162.1 L 341.2 163.4 L 345.5 166.4 L 349.8 170.8 L 354.0 176.5 L 358.2 183.0 L 362.5 190.0 L 366.8 197.0 L 371.0 203.5 L 375.2 209.2 L 379.5 213.6 L 383.8 216.6 L 388.0 217.9 L 392.2 217.5 L 396.5 215.3 L 400.8 211.6 L 405.0 206.5 L 409.2 200.3 L 413.5 193.5 L 417.8 186.5 L 422.0 179.7 L 426.2 173.5 L 430.5 168.4 L 434.8 164.7 L 439.0 162.5 L 443.2 162.1 L 447.5 163.4 L 451.8 166.4 L 456.0 170.8 L 460.2 176.5 L 464.5 183.0 L 468.8 190.0 L 473.0 197.0 L 477.2 203.5 L 481.5 209.2 L 485.8 213.6 L 490.0 216.6" fill="none" stroke="#ffffff" stroke-width="5.0" stroke-linecap="round" opacity="0.35" transform="translate(0 -4.0)"/>
+    <path d="M 170.0 270.0 L 173.8 276.1 L 177.5 281.8 L 181.2 286.5 L 185.0 289.9 L 188.8 291.7 L 192.5 291.8 L 196.2 290.2 L 200.0 287.0 L 203.8 282.4 L 207.5 276.8 L 211.2 270.7 L 215.0 264.5 L 218.8 258.8 L 222.5 254.0 L 226.2 250.4 L 230.0 248.4 L 233.8 248.1 L 237.5 249.5 L 241.2 252.6 L 245.0 257.1 L 248.8 262.5 L 252.5 268.6 L 256.2 274.8 L 260.0 280.6 L 263.8 285.6 L 267.5 289.3 L 271.2 291.5 L 275.0 292.0 L 278.8 290.7 L 282.5 287.8 L 286.2 283.5 L 290.0 278.1 L 293.8 272.1 L 297.5 265.9 L 301.2 260.0 L 305.0 254.9 L 308.8 251.1 L 312.5 248.7 L 316.2 248.0 L 320.0 249.1 L 323.8 251.8 L 327.5 256.0 L 331.2 261.3 L 335.0 267.2 L 338.8 273.4 L 342.5 279.4 L 346.2 284.5 L 350.0 288.6 L 353.8 291.1 L 357.5 292.0 L 361.2 291.1 L 365.0 288.6 L 368.8 284.5 L 372.5 279.4 L 376.2 273.4 L 380.0 267.2 L 383.8 261.3 L 387.5 256.0 L 391.2 251.8 L 395.0 249.1 L 398.8 248.0 L 402.5 248.7 L 406.2 251.1 L 410.0 254.9 L 413.8 260.0 L 417.5 265.9 L 421.2 272.1 L 425.0 278.1 L 428.8 283.5 L 432.5 287.8 L 436.2 290.7 L 440.0 292.0 L 443.8 291.5 L 447.5 289.3 L 451.2 285.6 L 455.0 280.6 L 458.8 274.8 L 462.5 268.6 L 466.2 262.5 L 470.0 257.1" fill="none" stroke="#6a7bff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 170.0 270.0 L 173.8 276.1 L 177.5 281.8 L 181.2 286.5 L 185.0 289.9 L 188.8 291.7 L 192.5 291.8 L 196.2 290.2 L 200.0 287.0 L 203.8 282.4 L 207.5 276.8 L 211.2 270.7 L 215.0 264.5 L 218.8 258.8 L 222.5 254.0 L 226.2 250.4 L 230.0 248.4 L 233.8 248.1 L 237.5 249.5 L 241.2 252.6 L 245.0 257.1 L 248.8 262.5 L 252.5 268.6 L 256.2 274.8 L 260.0 280.6 L 263.8 285.6 L 267.5 289.3 L 271.2 291.5 L 275.0 292.0 L 278.8 290.7 L 282.5 287.8 L 286.2 283.5 L 290.0 278.1 L 293.8 272.1 L 297.5 265.9 L 301.2 260.0 L 305.0 254.9 L 308.8 251.1 L 312.5 248.7 L 316.2 248.0 L 320.0 249.1 L 323.8 251.8 L 327.5 256.0 L 331.2 261.3 L 335.0 267.2 L 338.8 273.4 L 342.5 279.4 L 346.2 284.5 L 350.0 288.6 L 353.8 291.1 L 357.5 292.0 L 361.2 291.1 L 365.0 288.6 L 368.8 284.5 L 372.5 279.4 L 376.2 273.4 L 380.0 267.2 L 383.8 261.3 L 387.5 256.0 L 391.2 251.8 L 395.0 249.1 L 398.8 248.0 L 402.5 248.7 L 406.2 251.1 L 410.0 254.9 L 413.8 260.0 L 417.5 265.9 L 421.2 272.1 L 425.0 278.1 L 428.8 283.5 L 432.5 287.8 L 436.2 290.7 L 440.0 292.0 L 443.8 291.5 L 447.5 289.3 L 451.2 285.6 L 455.0 280.6 L 458.8 274.8 L 462.5 268.6 L 466.2 262.5 L 470.0 257.1" fill="none" stroke="#ffffff" stroke-width="3.9" stroke-linecap="round" opacity="0.35" transform="translate(0 -3.1)"/>
+    <path d="M 200.0 340.0 L 203.2 343.9 L 206.5 347.7 L 209.8 351.0 L 213.0 353.9 L 216.2 356.0 L 219.5 357.4 L 222.8 358.0 L 226.0 357.7 L 229.2 356.5 L 232.5 354.6 L 235.8 351.9 L 239.0 348.7 L 242.2 345.0 L 245.5 341.1 L 248.8 337.2 L 252.0 333.4 L 255.2 329.9 L 258.5 326.9 L 261.8 324.5 L 265.0 322.9 L 268.2 322.1 L 271.5 322.1 L 274.8 323.1 L 278.0 324.8 L 281.2 327.3 L 284.5 330.4 L 287.8 333.9 L 291.0 337.7 L 294.2 341.7 L 297.5 345.6 L 300.8 349.2 L 304.0 352.3 L 307.2 354.9 L 310.5 356.7 L 313.8 357.8 L 317.0 358.0 L 320.2 357.3 L 323.5 355.8 L 326.8 353.5 L 330.0 350.6 L 333.2 347.1 L 336.5 343.4 L 339.8 339.4 L 343.0 335.5 L 346.2 331.8 L 349.5 328.5 L 352.8 325.8 L 356.0 323.7 L 359.2 322.4 L 362.5 322.0 L 365.8 322.4 L 369.0 323.7 L 372.2 325.8 L 375.5 328.5 L 378.8 331.8 L 382.0 335.5 L 385.2 339.4 L 388.5 343.4 L 391.8 347.1 L 395.0 350.6 L 398.2 353.5 L 401.5 355.8 L 404.8 357.3 L 408.0 358.0 L 411.2 357.8 L 414.5 356.7 L 417.8 354.9 L 421.0 352.3 L 424.2 349.2 L 427.5 345.6 L 430.8 341.7 L 434.0 337.7 L 437.2 333.9 L 440.5 330.4 L 443.8 327.3 L 447.0 324.8 L 450.2 323.1 L 453.5 322.1 L 456.8 322.1 L 460.0 322.9" fill="none" stroke="#ff4fd8" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 200.0 340.0 L 203.2 343.9 L 206.5 347.7 L 209.8 351.0 L 213.0 353.9 L 216.2 356.0 L 219.5 357.4 L 222.8 358.0 L 226.0 357.7 L 229.2 356.5 L 232.5 354.6 L 235.8 351.9 L 239.0 348.7 L 242.2 345.0 L 245.5 341.1 L 248.8 337.2 L 252.0 333.4 L 255.2 329.9 L 258.5 326.9 L 261.8 324.5 L 265.0 322.9 L 268.2 322.1 L 271.5 322.1 L 274.8 323.1 L 278.0 324.8 L 281.2 327.3 L 284.5 330.4 L 287.8 333.9 L 291.0 337.7 L 294.2 341.7 L 297.5 345.6 L 300.8 349.2 L 304.0 352.3 L 307.2 354.9 L 310.5 356.7 L 313.8 357.8 L 317.0 358.0 L 320.2 357.3 L 323.5 355.8 L 326.8 353.5 L 330.0 350.6 L 333.2 347.1 L 336.5 343.4 L 339.8 339.4 L 343.0 335.5 L 346.2 331.8 L 349.5 328.5 L 352.8 325.8 L 356.0 323.7 L 359.2 322.4 L 362.5 322.0 L 365.8 322.4 L 369.0 323.7 L 372.2 325.8 L 375.5 328.5 L 378.8 331.8 L 382.0 335.5 L 385.2 339.4 L 388.5 343.4 L 391.8 347.1 L 395.0 350.6 L 398.2 353.5 L 401.5 355.8 L 404.8 357.3 L 408.0 358.0 L 411.2 357.8 L 414.5 356.7 L 417.8 354.9 L 421.0 352.3 L 424.2 349.2 L 427.5 345.6 L 430.8 341.7 L 434.0 337.7 L 437.2 333.9 L 440.5 330.4 L 443.8 327.3 L 447.0 324.8 L 450.2 323.1 L 453.5 322.1 L 456.8 322.1 L 460.0 322.9" fill="none" stroke="#ffffff" stroke-width="3.4" stroke-linecap="round" opacity="0.35" transform="translate(0 -2.6)"/>
 </svg>

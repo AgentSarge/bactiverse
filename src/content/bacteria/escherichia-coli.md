@@ -4,7 +4,6 @@ scientificName: Escherichia coli
 description: A rod-shaped gut bacterium and one of the most studied model organisms in molecular biology and genetics.
 caption: Stylized specimen plate showing rod-shaped E. coli cells.
 image: /media/escherichia-coli.svg
-mediaKind: still
 shape: rod
 tags:
   - human-related

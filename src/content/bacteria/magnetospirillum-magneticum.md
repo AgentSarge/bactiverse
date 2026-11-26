@@ -4,7 +4,6 @@ scientificName: Magnetospirillum magneticum
 description: A spiral aquatic bacterium that builds intracellular magnetite crystals (magnetosomes) and orients along Earth's magnetic field.
 caption: Stylized specimen plate showing spiral M. magneticum cells with magnetosome-like dots.
 image: /media/magnetospirillum-magneticum.svg
-mediaKind: still
 shape: spiral
 tags:
   - biotech

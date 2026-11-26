@@ -86,14 +86,6 @@ export function matchesFilters(entry: FilterableEntry, options: BrowseFilterOpti
 	return matchesCategory(entry, category) && matchesSearch(entry, query);
 }
 
-/** Filter a list of entries by category and/or name search. */
-export function filterEntries<T extends FilterableEntry>(
-	entries: readonly T[],
-	options: BrowseFilterOptions = {},
-): T[] {
-	return entries.filter((entry) => matchesFilters(entry, options));
-}
-
 /** Display label for a tag chip; falls back to the raw tag string. */
 export function tagLabel(tag: string): string {
 	return TAG_CHIP_LABELS[tag] ?? tag;

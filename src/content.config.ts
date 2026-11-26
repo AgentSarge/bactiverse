@@ -25,7 +25,6 @@ export const bacteriaSchema = z.object({
 	description: z.string(),
 	caption: z.string(),
 	image: z.string(),
-	mediaKind: z.literal('still'),
 	shape: bacteriaShapeSchema,
 	tags: z.array(z.string()),
 	traits: bacteriaTraitsSchema,

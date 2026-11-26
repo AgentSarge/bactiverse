@@ -44,6 +44,11 @@ Do not add a Cloudflare Astro adapter for this MVP — output stays fully static
 
 ## Project map
 
-- `/` — Browse (search + category filters + card grid)
-- `/b/:slug` — Detail (preview, Prompt / Facts / Sources, Copy prompt)
-- `/about` — Product explanation and safety stance
+How the running site is put together: [docs/codebase.md](docs/codebase.md).  
+The original product spec: [docs/2026-11-25-bactiverse-design.md](docs/2026-11-25-bactiverse-design.md). Where they disagree, the codebase doc and the source win.
+
+- `/` — Browse (search, category filters, card grid). Four cards are live 3D; the rest are SVG stills.
+- `/b/:slug` — Detail. 3D preview, Agent / Prompt / Facts, copy-prompt action, sources and safety in the aside.
+- `/about` — Product explanation and safety stance.
+
+Dark theme only. No accounts. Educational and prompt use only.

@@ -4,7 +4,6 @@ scientificName: Staphylococcus epidermidis
 description: A spherical bacterium that commonly lives as a harmless skin commensal, though it can cause opportunistic infection in medical settings.
 caption: Stylized specimen plate showing grape-like clusters of S. epidermidis cocci.
 image: /media/staphylococcus-epidermidis.svg
-mediaKind: still
 shape: spherical
 tags:
   - human-related

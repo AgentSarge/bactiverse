@@ -1,40 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Specimen plate: Streptococcus thermophilus chains">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-label="Streptococcus thermophilus cells in a chain">
   <defs>
-    <radialGradient id="plate" cx="48%" cy="42%" r="62%">
-      <stop offset="0%" stop-color="#24302b"/>
-      <stop offset="45%" stop-color="#141c19"/>
-      <stop offset="100%" stop-color="#080c0b"/>
-    </radialGradient>
-    <radialGradient id="plateRim" cx="50%" cy="45%" r="58%">
-      <stop offset="70%" stop-color="rgba(111,191,163,0)" />
-      <stop offset="92%" stop-color="rgba(111,191,163,0.08)" />
-      <stop offset="100%" stop-color="rgba(201,166,107,0.12)" />
-    </radialGradient>
-    <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="rgba(230,237,233,0.12)"/>
-      <stop offset="35%" stop-color="rgba(230,237,233,0)"/>
+    <linearGradient id="shine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.7"/>
+      <stop offset="55%" stop-color="#ffffff" stop-opacity="0"/>
     </linearGradient>
-    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
-      <feGaussianBlur stdDeviation="1.4"/>
-    </filter>
-    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
+    <linearGradient id="c0" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff5a8a"/>
+      <stop offset="100%" stop-color="#6b2539"/>
+    </linearGradient>
+    <radialGradient id="s0" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#ff5a8a"/>
+      <stop offset="100%" stop-color="#602234"/>
+    </radialGradient>
+    <linearGradient id="c1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff3d6e"/>
+      <stop offset="100%" stop-color="#6b192e"/>
+    </linearGradient>
+    <radialGradient id="s1" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#ff3d6e"/>
+      <stop offset="100%" stop-color="#601729"/>
+    </radialGradient>
+    <linearGradient id="c2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff9a6a"/>
+      <stop offset="100%" stop-color="#6b402c"/>
+    </linearGradient>
+    <radialGradient id="s2" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#ff9a6a"/>
+      <stop offset="100%" stop-color="#603a28"/>
+    </radialGradient>
+    <linearGradient id="c3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ff4fd8"/>
+      <stop offset="100%" stop-color="#6b215a"/>
+    </linearGradient>
+    <radialGradient id="s3" cx="35%" cy="32%" r="70%">
+      <stop offset="0%" stop-color="#ff4fd8"/>
+      <stop offset="100%" stop-color="#601e52"/>
+    </radialGradient>
+    <radialGradient id="wash" cx="50%" cy="48%" r="48%">
+      <stop offset="0%" stop-color="#ff5a8a" stop-opacity="0.22"/>
+      <stop offset="55%" stop-color="#ff5a8a" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ff5a8a" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <rect width="640" height="480" fill="#070b0a"/>
-  <ellipse cx="320" cy="248" rx="268" ry="202" fill="rgba(0,0,0,0.45)"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plate)" stroke="#3a4841" stroke-width="2.5"/>
-  <ellipse cx="320" cy="240" rx="250" ry="190" fill="url(#plateRim)"/>
-  <ellipse cx="320" cy="240" rx="236" ry="176" fill="none" stroke="#4a5a52" stroke-width="1" opacity="0.45"/>
-  <ellipse cx="300" cy="190" rx="170" ry="70" fill="url(#glass)"/>
-  <g fill="#6fbfa3" opacity="0.85" filter="url(#glow)">
-    <circle cx="200" cy="220" r="11"/><circle cx="220" cy="215" r="11"/><circle cx="240" cy="218" r="11"/>
-    <circle cx="260" cy="222" r="11"/><circle cx="280" cy="226" r="11"/><circle cx="300" cy="230" r="11"/>
-    <circle cx="250" cy="280" r="10"/><circle cx="268" cy="275" r="10"/><circle cx="286" cy="272" r="10"/>
-    <circle cx="304" cy="276" r="10"/><circle cx="322" cy="282" r="10"/><circle cx="340" cy="288" r="10"/>
-    <circle cx="360" cy="190" r="10"/><circle cx="378" cy="195" r="10"/><circle cx="396" cy="200" r="10"/>
-    <circle cx="414" cy="208" r="10"/><circle cx="430" cy="218" r="10"/>
-  </g>
-  <text x="320" y="440" text-anchor="middle" fill="#5c6b63" font-family="ui-monospace, monospace" font-size="12">S. thermophilus · coccus · specimen still</text>
+  <rect width="640" height="480" fill="#121212"/>
+  <rect width="640" height="480" fill="url(#wash)"/>
+  <g>
+      <circle cx="140.0" cy="250.0" r="30.0" fill="url(#c0)"/>
+      <ellipse cx="131.6" cy="240.4" rx="11.4" ry="6.6" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="191.4" cy="227.6" r="34.0" fill="url(#c1)"/>
+      <ellipse cx="181.9" cy="216.7" rx="12.9" ry="7.5" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="242.9" cy="195.3" r="34.0" fill="url(#c2)"/>
+      <ellipse cx="233.3" cy="184.4" rx="12.9" ry="7.5" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="294.3" cy="189.8" r="30.0" fill="url(#c3)"/>
+      <ellipse cx="285.9" cy="180.2" rx="11.4" ry="6.6" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="345.7" cy="181.8" r="34.0" fill="url(#c0)"/>
+      <ellipse cx="336.2" cy="170.9" rx="12.9" ry="7.5" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="397.1" cy="203.3" r="34.0" fill="url(#c1)"/>
+      <ellipse cx="387.6" cy="192.4" rx="12.9" ry="7.5" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="448.6" cy="219.6" r="30.0" fill="url(#c2)"/>
+      <ellipse cx="440.2" cy="210.0" rx="11.4" ry="6.6" fill="url(#shine)"/>
+    </g>
+    <g>
+      <circle cx="500.0" cy="258.0" r="34.0" fill="url(#c3)"/>
+      <ellipse cx="490.5" cy="247.1" rx="12.9" ry="7.5" fill="url(#shine)"/>
+    </g>
 </svg>
