@@ -3,8 +3,16 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PreviewStage from '../../components/PreviewStage.astro';
 import DetailTabs from '../../components/DetailTabs.astro';
+import BacteriumCard from '../../components/BacteriumCard.astro';
 import CopyPromptButton from '../../components/CopyPromptButton';
 import SafetyBanner from '../../components/SafetyBanner.astro';
+import { buildCopyPrompt } from '../../lib/prompt';
+import {
+	BROWSE_CATEGORIES,
+	isBrowseCategoryId,
+	tagLabel,
+	type BrowseCategoryId,
+} from '../../lib/filters';
 import '../../styles/detail.css';
 
 export async function getStaticPaths() {
@@ -20,31 +28,103 @@ const data = entry.data;
 const pageTitle = data.commonName;
 const pageDescription = data.description;
 const previewAlt = `${data.commonName} (${data.scientificName}): ${data.caption}`;
+
+const prompt = buildCopyPrompt({
+	commonName: data.commonName,
+	scientificName: data.scientificName,
+	description: data.description,
+	traits: data.traits,
+	usefulFor: data.usefulFor,
+	disclaimer: data.disclaimer,
+});
+const promptPeek = prompt.split('\n').slice(0, 8).join('\n');
+
+const all = await getCollection('bacteria');
+const others = all.filter((item) => item.id !== entry.id);
+const relatedPool = others.filter(
+	(item) =>
+		item.data.shape === data.shape || item.data.tags.some((tag) => data.tags.includes(tag)),
+);
+const related = [...(relatedPool.length > 0 ? relatedPool : others)]
+	.sort((a, b) => a.data.commonName.localeCompare(b.data.commonName, 'en', { sensitivity: 'base' }))
+	.slice(0, 6);
+
+function browseCategoryFor(shape: string, tags: string[]): BrowseCategoryId | null {
+	for (const tag of tags) {
+		if (tag !== 'all' && isBrowseCategoryId(tag) && tag !== 'rod' && tag !== 'spherical' && tag !== 'spiral') {
+			return tag;
+		}
+	}
+	if (shape === 'rod' || shape === 'spherical' || shape === 'spiral') return shape;
+	return null;
+}
+
+const relatedCategory = browseCategoryFor(data.shape, data.tags);
+const relatedLabel = relatedCategory
+	? (BROWSE_CATEGORIES.find((category) => category.id === relatedCategory)?.label ?? 'More specimens')
+	: 'More specimens';
+const relatedHref = relatedCategory ? `/?category=${relatedCategory}` : '/';
+
+const chipIds = new Set<string>();
+if (data.shape === 'rod' || data.shape === 'spherical' || data.shape === 'spiral') {
+	chipIds.add(data.shape);
+}
+for (const tag of data.tags) chipIds.add(tag);
+const chips = [...chipIds].map((id) => ({
+	id,
+	label: isBrowseCategoryId(id)
+		? (BROWSE_CATEGORIES.find((category) => category.id === id)?.label ?? tagLabel(id))
+		: tagLabel(id),
+	href: isBrowseCategoryId(id) && id !== 'all' ? `/?category=${id}` : null,
+}));
 ---
 
 <BaseLayout title={pageTitle} description={pageDescription}>
 	<article class="detail-page page-enter">
-		<header class="detail-page__top">
-			<a class="detail-page__back" href="/">← Go back</a>
-			<div class="detail-page__title-block">
-				<h1 class="detail-page__common">
-					{data.commonName}
-					<span class="detail-page__by"> · <em>{data.scientificName}</em></span>
+		<header class="detail-top">
+			<a class="detail-top__back" href="/">
+				<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+					<path fill="currentColor" d="M14.5 6.5 9 12l5.5 5.5-1.4 1.4L6.2 12l6.9-6.9 1.4 1.4Z"></path>
+				</svg>
+				Go back
+			</a>
+			<div class="detail-top__cluster">
+				<h1 class="detail-top__title">
+					<span class="detail-top__name">{data.commonName}</span>
+					<span class="detail-top__by">by</span>
+					<span class="detail-top__author">
+						<span class="detail-top__avatar" aria-hidden="true">
+							{(data.scientificName.replace(/[^A-Za-z]/g, '').slice(0, 2) || 'Ba').toUpperCase()}
+						</span>
+						{data.scientificName}
+					</span>
 				</h1>
+				<div class="detail-top__stats">
+					<span class="detail-top__stat">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+							<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"></circle>
+						</svg>
+						21K
+					</span>
+					<span class="detail-top__stat">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+							<path d="M12 20s-7-4.4-7-9a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 4.6-7 9-7 9Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path>
+						</svg>
+						1.4K
+					</span>
+				</div>
 			</div>
 		</header>
 
-		<div class="detail-page__layout">
-			<PreviewStage
-				image={data.image}
-				caption={data.caption}
-				alt={previewAlt}
-				mediaKind={data.mediaKind}
-			/>
-
-			<aside class="detail-page__panel" id="prompt">
-				<div class="detail-page__cta">
+		<div class="detail-split">
+			<div class="detail-split__stage">
+				<PreviewStage image={data.image} alt={previewAlt} mediaKind={data.mediaKind} />
+			</div>
+			<div class="detail-split__editor">
+				<DetailTabs prompt={prompt} promptPeek={promptPeek} traits={data.traits} tags={data.tags}>
 					<CopyPromptButton
+						slot="copy"
 						client:load
 						commonName={data.commonName}
 						scientificName={data.scientificName}
@@ -53,16 +133,108 @@ const previewAlt = `${data.commonName} (${data.scientificName}): ${data.caption}
 						usefulFor={data.usefulFor}
 						disclaimer={data.disclaimer}
 					/>
-				</div>
+				</DetailTabs>
+			</div>
+		</div>
 
-				<DetailTabs
-					description={data.description}
-					traits={data.traits}
-					usefulFor={data.usefulFor}
-					sources={data.sources}
-					tags={data.tags}
-				/>
+		<div class="detail-bar">
+			<button type="button" class="detail-bar__btn">
+				<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+					<path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-3.5L5 21V4.5a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+				</svg>
+				Save to favorites
+			</button>
+			<button type="button" class="detail-bar__btn">
+				<svg width="20" height="20" viewBox="0 0 38 57" aria-hidden="true">
+					<path fill="#f24e1e" d="M19 19V0H9.5A9.5 9.5 0 0 0 0 9.5 9.5 9.5 0 0 0 9.5 19H19Z"></path>
+					<path fill="#ff7262" d="M19 0h9.5A9.5 9.5 0 0 1 38 9.5 9.5 9.5 0 0 1 28.5 19H19V0Z"></path>
+					<path fill="#a259ff" d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5Z"></path>
+					<path fill="#1abcfe" d="M19 19h9.5a9.5 9.5 0 1 1 0 19H19V19Z"></path>
+					<path fill="#0acf83" d="M0 47.5A9.5 9.5 0 0 0 9.5 57H19V38H9.5A9.5 9.5 0 0 0 0 47.5Z"></path>
+				</svg>
+				Copy to Figma
+			</button>
+			<div class="detail-bar__split">
+				<button type="button" class="detail-bar__btn detail-bar__btn--export">
+					<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+						<path d="M8 8 4 12l4 4M16 8l4 4-4 4M14 5l-4 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+					</svg>
+					Export
+				</button>
+				<button type="button" class="detail-bar__btn detail-bar__btn--react" aria-haspopup="menu" aria-expanded="false">
+					React
+					<svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true">
+						<path fill="currentColor" d="M12 14.5 6.5 9l1.4-1.4L12 11.7l4.1-4.1L17.5 9z"></path>
+					</svg>
+				</button>
+			</div>
+		</div>
 
+		<div class="detail-lower">
+			{
+				related.length > 0 && (
+					<section class="detail-related-wrap" aria-labelledby="related-heading">
+						<h2 id="related-heading" class="detail-related__heading">
+							<a href={relatedHref}>{relatedLabel}</a>
+						</h2>
+						<ul class="detail-related">
+							{related.map((item) => (
+								<li>
+									<BacteriumCard
+										slug={item.id}
+										commonName={item.data.commonName}
+										scientificName={item.data.scientificName}
+										image={item.data.image}
+										shape={item.data.shape}
+										tags={item.data.tags}
+										caption={item.data.caption}
+									/>
+								</li>
+							))}
+						</ul>
+					</section>
+				)
+			}
+
+			<aside class="detail-aside">
+				<h2 class="detail-aside__name">{data.commonName}</h2>
+				<p class="detail-aside__description">{data.description}</p>
+				<p class="detail-aside__caption">{data.caption}</p>
+				{
+					chips.length > 0 && (
+						<ul class="detail-aside__tags">
+							{chips.map((chip) => (
+								<li>
+									{chip.href ? (
+										<a class="detail-aside__tag-link" href={chip.href}>
+											{chip.label}
+										</a>
+									) : (
+										<span class="detail-aside__tag">{chip.label}</span>
+									)}
+								</li>
+							))}
+						</ul>
+					)
+				}
+				<h3 class="detail-aside__sources-heading">Sources</h3>
+				{
+					data.sources.length > 0 ? (
+						<ul class="detail-aside__sources" id="sources">
+							{data.sources.map((source) => (
+								<li>
+									<a href={source.url} target="_blank" rel="noopener noreferrer">
+										{source.title}
+									</a>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p class="detail-aside__caption" id="sources">
+							No sources listed for this entry.
+						</p>
+					)
+				}
 				<SafetyBanner message={data.disclaimer} compact />
 			</aside>
 		</div>

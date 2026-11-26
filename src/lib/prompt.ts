@@ -57,3 +57,15 @@ export function buildCopyPrompt(entry: BacteriaPromptEntry): string {
 		'Please help with study planning or a plain-language writeup based only on this pack.',
 	].join('\n');
 }
+
+/** Plain-text traits block for the detail-page “Copy facts” action. */
+export function buildFactsClipboard(
+	entry: Pick<BacteriaPromptEntry, 'commonName' | 'scientificName' | 'traits'>,
+): string {
+	return [
+		`${entry.commonName} (${entry.scientificName})`,
+		`Shape: ${entry.traits.shape}`,
+		`Habitat: ${entry.traits.habitat}`,
+		`Famous for: ${entry.traits.famousFor}`,
+	].join('\n');
+}

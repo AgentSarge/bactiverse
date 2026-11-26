@@ -37,11 +37,6 @@ const activeCategory = parseBrowseCategory(Astro.url.searchParams.get('category'
 			rel="stylesheet"
 		/>
 		<title>{pageTitle}</title>
-		<script is:inline>
-			if (localStorage.getItem('theme') === 'light') {
-				document.documentElement.dataset.theme = 'light';
-			}
-		</script>
 	</head>
 	<body>
 		<a class="skip-link" href="#main-content">Skip to content</a>
